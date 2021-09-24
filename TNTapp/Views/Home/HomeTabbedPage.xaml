@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"    
+             ios:Page.UseSafeArea="true"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:profile="clr-namespace:TNTapp.Views.Profile"
+            xmlns:members="clr-namespace:TNTapp.Views.Members"
+            xmlns:message="clr-namespace:TNTapp.Views.Messages"
+            xmlns:cards="clr-namespace:TNTapp.Views.Cards"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.BarItemColor="Gray"
+            android:TabbedPage.BarSelectedItemColor="{StaticResource AppButtonColor}"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarTextColor="{StaticResource AppGrayColor}" 
+            BarBackgroundColor="{StaticResource AppHeaderColor}"
+            x:Class="TNTapp.Views.Home.HomeTabbedPage">
+  <!--Pages can be added as references or inline-->
+    <profile:ProfilePage BackgroundColor="White" Icon="profile.png" Title="Profile"/>
+    <members:MembersPage BackgroundColor="White" Icon="members.png" Title="Members" />
+    <message:MessagePage BackgroundColor="White" Icon="messages.png" Title="Message" />
+    <cards:CardsPage  BackgroundColor="White" Icon="cards.png" Title="Cards" />
+</TabbedPage>

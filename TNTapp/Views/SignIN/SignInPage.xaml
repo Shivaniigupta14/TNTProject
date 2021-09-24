@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"    
+             ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:TNTapp.CustomControls"
+             x:Class="TNTapp.Views.SignIN.SignInPage"
+             NavigationPage.HasNavigationBar="False" >
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="{StaticResource AppBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Header Section-->
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppHeaderColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--Back Button-->
+                <ContentView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="20,0,0,0">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </ContentView.GestureRecognizers>
+                    <Image Source="back.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                </ContentView>
+                <!--Sign In Title Section-->
+                <Grid Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="SignIn" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </Grid>
+
+            </Grid>
+             <!--UserDetail section-->
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="20,20,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                
+                <!--Username Entry-->
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <controls:CustomEntry Text="{Binding Email}" x:Name="Email" Placeholder=" Username" TextColor="{StaticResource AppGrayColor}" Keyboard="Email" BackgroundColor="{StaticResource AppBlackColor}" PlaceholderColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></controls:CustomEntry>
+                </Grid>
+                <!--Password Entry-->
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <controls:CustomEntry Text="{Binding Password}" x:Name="Password" Placeholder=" Password" TextColor="{StaticResource AppGrayColor}" BackgroundColor="{StaticResource AppBlackColor}" PlaceholderColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></controls:CustomEntry>
+                </Grid>
+                <!--Sign In Button-->
+                <Grid Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0">
+                    <Button Text="Sign In" BackgroundColor="{StaticResource AppButtonColor}" CornerRadius="10" TextColor="White" Command="{Binding SignInCommand}"></Button>
+                </Grid>
+                <!--Forgot Password-->
+                <Grid Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Label Text=" Forgot Password" TextDecorations="Underline"  FontSize="16" TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

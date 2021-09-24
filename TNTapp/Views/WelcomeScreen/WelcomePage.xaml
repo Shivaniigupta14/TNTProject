@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"    
+             ios:Page.UseSafeArea="true"
+    x:Class="TNTapp.Views.WelcomeScreen.WelcomePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundColor}">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="51*"/>
+                    <RowDefinition Height="41*"/>
+                </Grid.RowDefinitions>
+
+                <!--Welcome Text Section-->
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppHeaderColor}">
+                    <Label Text="Welcome" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </Grid>
+                <!--Logo Section-->
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Image Source="coverlogo.png" HeightRequest="40" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+                </Grid>
+                <!--Button Section-->
+                <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0,50,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <!--Sign In-->
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                        <Button Text="SIGN IN" TextColor="White" BackgroundColor="#224C62" CornerRadius="10" Command="{Binding SignInCommand}"></Button>
+                    </Grid>
+                    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="1" BackgroundColor="{StaticResource AppWhiteColor}"></BoxView>
+                        <Label Grid.Column="1" Text="Or" TextColor="{StaticResource AppButtonColor}" FontSize="20" VerticalTextAlignment ="Center" HorizontalTextAlignment="Center"></Label>
+                        <BoxView Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="1" BackgroundColor="{StaticResource AppWhiteColor}"></BoxView>
+                    </Grid>
+                    <!--Sign Up-->
+                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Button Text="SIGN UP" TextColor="White" Command="{Binding SignUpCommand}" BackgroundColor="{StaticResource AppButtonColor}" CornerRadius="10"></Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

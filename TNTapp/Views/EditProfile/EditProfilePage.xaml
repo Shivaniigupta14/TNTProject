@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"    
+             ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:TNTapp.CustomControls"
+             x:Class="TNTapp.Views.EditProfile.EditProfilePage" NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="{StaticResource AppBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Header Section-->
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppHeaderColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--Back Button-->
+                <ContentView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="20,0,0,0">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </ContentView.GestureRecognizers>
+                    <Image Source="back.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                </ContentView>
+                <!--Edit Title Section-->
+                <Grid Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="Edit Profile" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </Grid>
+            </Grid>
+            
+            
+            <!--Second Section-->
+            <ScrollView IsClippedToBounds="True" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid Margin="20,20,20,0" RowSpacing="15"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <!--First Name Section-->
+                    <Frame Grid.Row="0" HasShadow="False" Padding="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <controls:CustomEntry Placeholder="First Name" Text="{Binding UpdateProfileModel.firstName}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <!--Last Name Section-->
+                    <Frame Grid.Row="1" HasShadow="False" Padding="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <controls:CustomEntry Placeholder="Last Name" Text="{Binding UpdateProfileModel.lastName}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <!--Phone Number Section-->
+                    <Frame Grid.Row="2" HasShadow="False" Padding="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <controls:CustomEntry Placeholder="Phone Number" MaxLength="20" Keyboard="Telephone" Text="{Binding UpdateProfileModel.cellNumber}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <!--Title Section-->
+                    <Frame Grid.Row="3" HasShadow="False" Padding="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <controls:CustomEntry Placeholder="Title" Text="{Binding UpdateProfileModel.title}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <!--Website Section-->
+                    <Frame Grid.Row="4" HasShadow="False" Padding="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <controls:CustomEntry Placeholder="Website" Keyboard="Email" Text="{Binding UpdateProfileModel.website}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <!-- NMLS  Section-->
+                    <Frame Grid.Row="5" HasShadow="False" Padding="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <controls:CustomEntry Placeholder="NMLS" Text="{Binding UpdateProfileModel.nmlSnumber}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <!--SIGN IN Button Section-->
+                    <Button Grid.Row="7" Text="Update Profile" Margin="40,0,40,0" Command="{Binding UpdateProfileCommand}" CornerRadius="10" BackgroundColor="{StaticResource AppButtonColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>
+                </Grid>
+            </ScrollView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
