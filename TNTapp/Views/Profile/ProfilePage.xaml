@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:ci="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             ios:Page.UseSafeArea="true"
+             x:Class="TNTapp.Views.Profile.ProfilePage" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppHeaderColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--Profile Title Section-->
+                <Grid Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="{Binding UserName}" TextColor="{StaticResource AppWhiteColor}" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </Grid>
+                <!--Logout-->
+                <Grid Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Margin="0,0,20,0">
+                    <Label Text="Logout" TextColor="{StaticResource AppGrayColor}" FontSize="15" HorizontalTextAlignment="End" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogOutCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+            <!--Profile Detail-->
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBackgroundColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <!--Profile Image Section-->
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Frame Grid.Column="1" Padding="1" HeightRequest="140" WidthRequest="140" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="False" BorderColor="{StaticResource AppButtonColor}" CornerRadius="70">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ProfileImageCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <ci:CircleImage HeightRequest="140" WidthRequest="140" x:Name="ImageProfile"  Aspect="AspectFill"  HorizontalOptions="FillAndExpand"
+                            Source="{Binding ProfileImage}" VerticalOptions="FillAndExpand"/>
+                    </Frame>
+                </Grid>
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label Text="{Binding UserName}" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Binding Email}" FontSize="14" TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </StackLayout>
+                <!--Profile logo added-->
+                <Image Grid.Row="2" Source="tntprofilelogo" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="120"  WidthRequest="120"/>
+                <!--Edit Profile Button Section-->
+                <Button Grid.Row="3" Text="Edit Profile" Margin="40,0,40,0" Command="{Binding EditCommand}" CornerRadius="10" BackgroundColor="{StaticResource AppButtonColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TNTapp.App">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <!--#region Colors-->
+
+            <Color x:Key="AppWhiteColor">#FFFFFF</Color>
+            <Color x:Key="AppBlackColor">#000000</Color>
+            <Color x:Key="AppBackgroundColor">#000013</Color>
+            <Color x:Key="AppHeaderColor">#13111D</Color>
+            <Color x:Key="AppButtonColor">#224C62</Color>
+            <Color x:Key="AppGrayColor">#BCBBC7</Color>
+            <Color x:Key="AppRedColor">Red</Color>
+
+     
+            <!--#endregion-->
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"    
+             ios:Page.UseSafeArea="true"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:controls="clr-namespace:TNTapp.CustomControls"     
+             x:Class="TNTapp.Views.PopUp.ContactEditPopUpPage">
+    <Grid>
+        <StackLayout x:Name="PopUpBgLayout" />
+        <StackLayout x:Name="PopUpDialogLayout"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+            Orientation="Vertical" BackgroundColor="Transparent" Margin="20">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                 HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource AppBackgroundColor}">
+                    <Grid RowDefinitions="40,40,40,40,40,40,40,40,40" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" BackgroundColor="Transparent">
+                        <!--Header Section-->
+                        <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppHeaderColor}">
+                            <Label Text="Edit Contact" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource AppWhiteColor}"/>
+                        </Grid>
+                        <!--Frist Name Section-->
+                        <Frame Grid.Row="1" HasShadow="False" Padding="15,0,15,0" Margin="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <controls:CustomEntry Placeholder="First Name" Text="{Binding FirstName}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <controls:CustomEntry.Behaviors>
+                                    <controls:SetFocusOnEntryCompletedBehavior TargetElement="{x:Reference lastname}"/>
+                                </controls:CustomEntry.Behaviors>
+                            </controls:CustomEntry>
+                        </Frame>
+                        <!--Last Name Section-->
+                        <Frame Grid.Row="2" HasShadow="False" Padding="15,0,15,0" Margin="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <controls:CustomEntry Placeholder="Last Name" x:Name="lastname" Text="{Binding LastName}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <controls:CustomEntry.Behaviors>
+                                    <controls:SetFocusOnEntryCompletedBehavior TargetElement="{x:Reference email}"/>
+                                </controls:CustomEntry.Behaviors>
+                            </controls:CustomEntry>
+                        </Frame>
+                        <!--Phone Number Section-->
+                        <Frame Grid.Row="3" HasShadow="False" Padding="15,0,15,0" Margin="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <controls:CustomEntry Placeholder="Cell Number"  Keyboard="Telephone" IsReadOnly="True" MaxLength="20"  Text="{Binding PhoneNumber}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                        </Frame>
+                        <!--Email Section-->
+                        <Frame Grid.Row="4" HasShadow="False" Padding="15,0,15,0" Margin="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <controls:CustomEntry Placeholder="Email" Keyboard="Email" x:Name="email" Text="{Binding EmailAddress}" PlaceholderColor="{StaticResource AppGrayColor}" TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <controls:CustomEntry.Behaviors>
+                                    <controls:SetFocusOnEntryCompletedBehavior TargetElement="{x:Reference pckBirthMonth}"/>
+                                </controls:CustomEntry.Behaviors>
+                            </controls:CustomEntry>
+                        </Frame>
+                        <!--BirthMonth Section-->
+                        <Frame Grid.Row="5" HasShadow="False" Padding="15,0,15,0" Margin="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BirthMonth_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding BirthMonth}" FontSize="16" TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        </Frame>
+                        <controls:CustomPickerRegular x:Name="pckBirthMonth" IsVisible="False" SelectedItem="{Binding BirthMonth}" Title="Select Birth Month" SelectedIndexChanged="PckBirthMonth_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>1</x:String>
+                                <x:String>2</x:String>
+                                <x:String>3</x:String>
+                                <x:String>4</x:String>
+                                <x:String>5</x:String>
+                                <x:String>6</x:String>
+                                <x:String>7</x:String>
+                                <x:String>8</x:String>
+                                <x:String>9</x:String>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+                            </Picker.Items>
+                            <controls:CustomPickerRegular.Behaviors>
+                                <controls:SetFocusOnEntryCompletedBehavior TargetElement="{x:Reference pckBirthDayOfMonth}"/>
+                            </controls:CustomPickerRegular.Behaviors>
+                        </controls:CustomPickerRegular>
+
+                        <!--BirthMonth Section-->
+                        <Frame Grid.Row="6" HasShadow="False" Padding="15,0,15,0" Margin="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BirthDayOfMonth_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding BirthDayOfMonth}" FontSize="16" TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        </Frame>
+                        <controls:CustomPickerRegular x:Name="pckBirthDayOfMonth" IsVisible="False" SelectedItem="{Binding BirthDayOfMonth}" Title="Select Birth Day Of Month">
+                            <Picker.Items>
+                                <x:String>01</x:String>
+                                <x:String>02</x:String>
+                                <x:String>03</x:String>
+                                <x:String>04</x:String>
+                                <x:String>05</x:String>
+                                <x:String>06</x:String>
+                                <x:String>07</x:String>
+                                <x:String>08</x:String>
+                                <x:String>09</x:String>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+                                <x:String>13</x:String>
+                                <x:String>14</x:String>
+                                <x:String>15</x:String>
+                                <x:String>16</x:String>
+                                <x:String>17</x:String>
+                                <x:String>18</x:String>
+                                <x:String>19</x:String>
+                                <x:String>20</x:String>
+                                <x:String>21</x:String>
+                                <x:String>22</x:String>
+                                <x:String>23</x:String>
+                                <x:String>24</x:String>
+                                <x:String>25</x:String>
+                                <x:String>26</x:String>
+                                <x:String>27</x:String>
+                                <x:String>28</x:String>
+                                <x:String>29</x:String>
+                                <x:String>30</x:String>
+                                <x:String>31</x:String>
+                            </Picker.Items>
+                        </controls:CustomPickerRegular>
+                        <!--Bucket section-->
+                        <Frame Grid.Row="7" HasShadow="False" Padding="15,0,15,0" Margin="15,0,15,0" BackgroundColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Bucket_Item_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding BucketOfItem}" FontSize="16" TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        </Frame>
+                        <controls:CustomPickerRegular x:Name="pckBucketitem" IsVisible="False" SelectedItem="{Binding BucketOfItem}" Title="Select Bucket item" SelectedIndexChanged="pckBucketitem_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>Business</x:String>
+                                <x:String>Family</x:String>
+                                <x:String>Friend</x:String>
+                            </Picker.Items>
+                        </controls:CustomPickerRegular>
+                        <!--Cancel and Save Button Section-->
+                        <Grid Grid.Row="8" ColumnDefinitions="*,1,*" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppHeaderColor}">
+                            <!--Cancel Button Section-->
+                            <Grid Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppRedColor}">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Delete_Tapped"/>
+                                </Grid.GestureRecognizers>
+                                <Label Text="Delete" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource AppWhiteColor}"/>
+                            </Grid>
+                            <BoxView Grid.Column="1" BackgroundColor="{StaticResource AppBackgroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                            <!--Save Button Section-->
+                            <Grid Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppButtonColor}">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Save_Tapped"/>
+                                </Grid.GestureRecognizers>
+                                <Label Text="Save" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource AppWhiteColor}"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                <Image Source="cut.png" HeightRequest="50" WidthRequest="50" TranslationX="10" TranslationY="-12" HorizontalOptions="End" VerticalOptions="Start">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Close_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </StackLayout>
+    </Grid>
+</pages:PopupPage>
